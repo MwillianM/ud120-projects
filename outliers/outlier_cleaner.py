@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 
 
 def outlierCleaner(predictions, ages, net_worths):
@@ -15,6 +15,17 @@ def outlierCleaner(predictions, ages, net_worths):
 
     ### your code goes here
 
+    for i in range(len(predictions)):
+      cleaned_data.append((ages[i], net_worths[i], abs(predictions[i]-net_worths[i])))
     
-    return cleaned_data
+    boundary = int(round(len(cleaned_data)*-0.1))
+    return sorted(cleaned_data, key = lambda x: x[-1])[:boundary]
 
+    
+    #return cleaned_data
+
+if __name__ == '__main__': 
+  net_worths  = [0,1,2,3,4,5]
+  ages        = [0,1,2,3,4,5]
+  predictions = [1,0,-1,10,-10]
+  print outlierCleaner(predictions, ages, net_worths)
