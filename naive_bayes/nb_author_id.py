@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 
 """ 
     This is the code to accompany the Lesson 1 (Naive Bayes) mini-project. 
@@ -12,7 +12,7 @@
     
 import sys
 from time import time
-sys.path.append("../tools/")
+sys.path.append('/home/matheus/Github/ud120-projects/tools/')
 from email_preprocess import preprocess
 
 
@@ -26,7 +26,16 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 #########################################################
 ### your code goes here ###
+from sklearn.naive_bayes import GaussianNB
+clf = GaussianNB()
+t0 = time()
+clf.fit(features_train, labels_train)
+print "Tempo de treinamento: ", round(time() - t0, 3), "s"
 
+t0 = time()
+pred = clf.predict(features_test)
+print "Tempo de previsao: ", round(time() - t0, 3), "s"
+print clf.score(features_test, labels_test)
 
 #########################################################
 
