@@ -1,4 +1,6 @@
-#!/usr/bin/python2
+
+
+#fdsajdsafçkjdçaslk
 
 import pickle
 import cPickle
