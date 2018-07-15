@@ -124,5 +124,19 @@ def targetFeatureSplit( data ):
     return target, features
 
 
+if __name__ == '__main__':
+  import pickle
+  data_dict = pickle.load( open("../final_project/final_project_dataset.pkl", "r") )
+  data_dict.pop("TOTAL")
+  data = featureFormat( data_dict, ['salary', 'exercised_stock_options'])
+  salary, exercised = targetFeatureSplit(data)
+  salary, exercised = [i for i in salary if i > 0.0], [i for i in exercised if i > 0.0]
+  print [max(salary)], [min(salary)], max(exercised), min(exercised)
 
-
+  from sklearn.preprocessing import MinMaxScaler
+  import numpy
+  scaler_sal, scaler_exe= MinMaxScaler(), MinMaxScaler()
+  scaler_sal.fit([[min(salary)], [max(salary)]])
+  scaler_exe.fit(np.array([min(exercised), max(exercised)]))
+  print scaler_sal.transform([[200000.]])
+  print scaler_exe.transform([[1000000.]])

@@ -75,11 +75,12 @@ plt.show()
 ### for the data and store them to a list called pred
 
 from sklearn.cluster import KMeans
+cst = KMeans(n_clusters = 2).fit(finance_features)
+pred = cst.predict(finance_features)
 
 cst = KMeans(n_clusters = 2).fit(finance_features)
 print cst.labels_
 pred = cst.predict(finance_features)
-
 
 ### rename the "name" parameter when you change the number of features
 ### so that the figure gets saved to a different file
