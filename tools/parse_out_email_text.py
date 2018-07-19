@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 from nltk.stem.snowball import SnowballStemmer
 import string
@@ -21,7 +21,7 @@ def parseOutText(f):
 
     ### split off metadata
     content = all_text.split("X-FileName:")
-    words = ""
+    #words = ""
     if len(content) > 1:
         ### remove punctuation
         text_string = content[1].translate(string.maketrans("", ""), string.punctuation)
@@ -29,7 +29,7 @@ def parseOutText(f):
         ### project part 2: comment out the line below
         #words = text_string
         stemmer = SnowballStemmer('english')
-        words = text_string.replace('\n', '').split(' ')
+        words = text_string.replace('\n', ' ').split(' ')
         words = ' '.join([stemmer.stem(word) for word in words if len(word)])
 
         ### split the text string into individual words, stem each word,
@@ -46,6 +46,7 @@ def parseOutText(f):
 
 def main():
     ff = open("../text_learning/test_email.txt", "r")
+    #ff = open("../maildir/jones-t/all_documents/4056", "r")
     # text = ff.read()
     text = parseOutText(ff)
     print text
