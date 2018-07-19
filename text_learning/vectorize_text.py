@@ -34,17 +34,17 @@ word_data = []
 ### can take a long time
 ### temp_counter helps you only look at the first 200 emails in the list so you
 ### can iterate your modifications quicker
-temp_counter = 0
+# temp_counter = 0
 
 
 for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
     for path in from_person:
         ### only look at first 200 emails when developing
         ### once everything is working, remove this line to run over full dataset
-        temp_counter += 1
-        if temp_counter < 200:
+        #temp_counter += 1
+        #if temp_counter < 200:
             path = os.path.join('..', path[:-1])
-            print path
+            # print path
             email = open(path, "r")
 
             ### use parseOutText to extract the text from the opened email
@@ -70,7 +70,8 @@ from_chris.close()
 pickle.dump( word_data, open("your_word_data.pkl", "w") )
 pickle.dump( from_data, open("your_email_authors.pkl", "w") )
 
-
+print word_data[152]
+print len(word_data)
 
 
 
