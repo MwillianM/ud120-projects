@@ -5,6 +5,7 @@ import pickle
 import re
 import sys
 
+print os.getcwd()
 sys.path.append( "../tools/" )
 from parse_out_email_text import parseOutText
 
@@ -51,7 +52,7 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
             text = parseOutText(email)
             ### use str.replace() to remove any instances of the words
             ### ["sara", "shackleton", "chris", "germani"]
-            for i in ["sara", "shackleton", "chris", "germani"]:
+            for i in ["sara", "shackleton", "chris", "germani", 'sshacklensf']:
               text.replace(i, '')
             ### append the text to word_data
             word_data.append(text)

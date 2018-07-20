@@ -38,6 +38,7 @@ labels_train   = labels_train[:150]
 
 
 ### your code goes here
+
 '''
 from sklearn.tree import DecisionTreeClassifier
 tree = DecisionTreeClassifier()
@@ -50,5 +51,8 @@ tree = DecisionTreeClassifier()
 tree.fit(features_train,labels_train)
 print tree.score(features_test,labels_test)
 print sorted(tree.feature_importances_, reverse=True)[:10]
-index = numpy.where(tree.feature_importances_ == 0.7647058823529412)
-print index[0], vectorizer.get_feature_names()[index[0][0]]
+index = numpy.where(tree.feature_importances_ == 0.875)
+# print vectorizer.get_feature_names()[index[0][0]]
+print vectorizer.get_feature_names()[33614]
+#, vectorizer.get_feature_names()[index[0][0]]
+
